@@ -28,7 +28,7 @@ pipeline {
         string(name: 'RAMPUP',      defaultValue: '10', description: 'Ramp-up en segundos')
         string(name: 'ITERACIONES', defaultValue: '10', description: 'Iteraciones (loop count) por usuario')
         string(name: 'MAX_ERROR',   defaultValue: '5',  description: '% maximo de errores aceptado en JMeter')
-        string(name: 'REPO_URL',    defaultValue: 'https://github.com/TU_USUARIO/00_PSW_ValeryChumpitaz.git',
+        string(name: 'REPO_URL',    defaultValue: 'https://github.com/VicenteLopezJ/Reto-con-JenkinsSlackSonarqubeJMeter.git',
                description: 'Solo se usa si el job es "Pipeline script" (no "from SCM")')
         string(name: 'BRANCH',      defaultValue: 'main', description: 'Rama a construir')
         string(name: 'SLACK_CHANNEL', defaultValue: '', description: 'Canal de Slack (ej. #jenkins-pipeline). Vacio = canal por defecto del plugin')
