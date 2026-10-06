@@ -1,21 +1,5 @@
-// =====================================================================
-//  Pipeline de Calidad - PSW Pipeline Base
-//  Flujo: Codigo -> Jenkins -> Build -> SonarQube -> JMeter -> Slack
-//
-//  Plugins requeridos: Pipeline, Git, JUnit, SonarQube Scanner,
-//                      Slack Notification (HTML Publisher es opcional)
-//  Funciona en agentes Windows (bat + PowerShell) y Linux/Mac (sh).
-// =====================================================================
-
 pipeline {
     agent any
-
-    // Si configuraste herramientas en "Manage Jenkins > Tools", descomenta
-    // y usa los mismos nombres. Si mvn y java ya estan en el PATH, dejalo asi.
-    // tools {
-    //     maven 'Maven3'
-    //     jdk 'JDK17'
-    // }
 
     options {
         buildDiscarder(logRotator(numToKeepStr: '10'))
@@ -88,7 +72,7 @@ pipeline {
                 dir(env.PROJECT_DIR) {
                     withSonarQubeEnv(env.SONAR_SERVER) {
                         script {
-                            String cmd = "mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=${env.SONAR_KEY}"
+                            String cmd = "mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=${env.SONAR_KEY} -Dsonar.organization=vicentelopezj"
                             ejecutar(cmd, cmd)
                         }
                     }
